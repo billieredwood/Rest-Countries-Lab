@@ -16,6 +16,7 @@ const CountriesList = ({countries}) => {
     setVisitedCountries([...visitedCountries, country]);
     }
 
+    // an array that will be a list of countries that have not yet been visited (i.e., not present in the visitedCountries array).
     const allCountries = countries.filter(
         (country) => !visitedCountries.includes(country)
       );
@@ -24,22 +25,23 @@ const CountriesList = ({countries}) => {
     return ( 
         //react fragment groups elements together:
         <>
-        <div className="countries-container">
+       
         <ul>
-            {/* map over countries prop and split into an array of country objects to render a list of countries */}
+        {/* map over countries prop and split into an array of country objects to render a list of countries */}
             {allCountries.map((country, id) => (
                 <Country country={country} key={id} 
                 visitedConfirmed={handleCountryVisited} />
             ))}
         </ul>
+
         {/* Render a list of visited countries */}
         <ul>
-        <h3>Countries I've Visited</h3>
+        <h3>Countries I've Visited📍</h3>
         {visitedCountries.map((country, id) => (
           <li key={id}>{country.name.common}</li>
         ))}
         </ul>
-        </div>
+       
 
         </>
 

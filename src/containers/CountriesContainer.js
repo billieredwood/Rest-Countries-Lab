@@ -8,7 +8,7 @@ import CountriesList from "../components/CountriesList";
 const CountriesContainer = () => {
     // useState hook to create state variables for all the countries and visited countries lists:
     const [allCountries, setAllCountries] = useState([]); 
-    const [countriesVisited, setCountriesVisited] = useState([]);       //
+    // const [countriesVisited, setCountriesVisited] = useState([]);       //
 
     // a function to load/fetch data from the api:
     const loadCountriesData = async () => {           //async bc it loads data to api
@@ -31,21 +31,21 @@ const CountriesContainer = () => {
     // setCountriesVisited()
     // setAllCountries.pop([...allCountries, country]);
     // }
-
-
     
     //render each list and country buttons:
     return ( 
         <>
-        <h1>Country Bucket List</h1>
-    
-        <h3>All Countries</h3>
-        <CountriesList countries={allCountries}/>
+        <h1>🌎 Country Bucket List 🌍</h1>
+        <div className="countries-container">
+            <h3>All Countries 🗺</h3>
+            <CountriesList countries={allCountries}/>
         
-        {/* planning notes: maybe use spreader operator to move countries elements to 'visited array' */}
-        
-        <CountriesList countries={countriesVisited}/>
-
+            {/* planning notes: maybe use spreader operator to move countries elements to 'visited array' */}
+            
+            {/* not needed: */}
+            {/* <h3>Countries I've Visited📍</h3>
+            <CountriesList countries={countriesVisited} /> */}
+        </div>
         
         </>
      );
