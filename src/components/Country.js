@@ -12,14 +12,15 @@ const handleClick=() => {
     setVisited(true);
     visitedConfirmed(country);
 
-//planning notes: next steps - what info needs to be where to make the two seperate lists?
+//planning notes: next steps - what info needs to be where to make the two separate lists?
 
 }
     return ( 
 <li>
 
      {country.name.common} 
-     <button onClick={handleClick} disabled={visited} >Visited</button>
+     {/* the following line previously included 'disabled={visited}', which was causing array elements below selected element to disable their button - removing this fixed the issue after adding the 'allCountries' function into the CountriesList to remove the elements from all-list when they are added to the visited-list on button click */}
+     <button onClick={handleClick} >Visited</button>
                 
 </li>
 

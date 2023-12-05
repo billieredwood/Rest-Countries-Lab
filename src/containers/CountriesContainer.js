@@ -3,21 +3,20 @@
 //import use state to manage countries list components' state and use effect to 
 import { useState, useEffect } from "react";
 import CountriesList from "../components/CountriesList";
-import VisitedCountriesList from "../components/VisitedCountriesList";
 
-
+//functional component to contain all components (i.e. countries list, country.):
 const CountriesContainer = () => {
-
+    // useState hook to create state variables for all the countries and visited countries lists:
     const [allCountries, setAllCountries] = useState([]); 
     const [countriesVisited, setCountriesVisited] = useState([]);       //
 
     // a function to load/fetch data from the api:
     const loadCountriesData = async () => {           //async bc it loads data to api
         const response = await fetch("https://restcountries.com/v3.1/all")
-        const data = await response.json();         //await returns a promise too.
+        const data = await response.json();         //await returns a promise (specifications of request).
         setAllCountries(data);  
     }
-
+// useEffect hook loads countries objects' data when the component mounts:
     useEffect( () => {
         loadCountriesData();
     }, []);
@@ -25,14 +24,15 @@ const CountriesContainer = () => {
     //do a function here:
     //(move countries between lists)
     //that on click of countries list, adds selected element to countries visited list.
-    // ? ternerary operator? 
 
 
-    // // function that moves the marked country to new list:
+    // function that moves the marked country to new list:
     // const moveCountryList = (country) => {
     // setCountriesVisited()
-    // setAllCountries
+    // setAllCountries.pop([...allCountries, country]);
     // }
+
+
     
     //render each list and country buttons:
     return ( 
@@ -42,9 +42,11 @@ const CountriesContainer = () => {
         <h3>All Countries</h3>
         <CountriesList countries={allCountries}/>
         
-        {/* use spreader operator to move countries elements to 'visited array' */}
+        {/* planning notes: maybe use spreader operator to move countries elements to 'visited array' */}
         
-        <CountriesList countries={countriesVisited} />
+        <CountriesList countries={countriesVisited}/>
+
+        
         </>
      );
 
